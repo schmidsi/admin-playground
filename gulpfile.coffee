@@ -90,11 +90,13 @@ gulp.task 'stylus', ->
     return gulp.src(paths.stylus.compile)
         .pipe plumber()
         .pipe stylus
+            define:
+                '$fa-font-path': '/lib/font-awesome-stylus/fonts'
             use: [
-                ## Uncomment following lines to use stylus plugins
-                #require('nib')()
-                #require('rupture')()
-                #require('axis')()
+                require('bootstrap-styl')()
+            ]
+            import: [
+                require.resolve('font-awesome-stylus')
             ]
         .on 'error', notify.onError("Stylus Error: <%= error.message %>")
         .pipe gulp.dest(paths.dist.css)

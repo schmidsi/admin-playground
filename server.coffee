@@ -13,6 +13,9 @@ app.set 'views', __dirname + '/frontend/templates'
 # Until the image optimisation process isn't implemented, hack it like this:
 app.use '/img', express.static(__dirname + '/frontend/images')
 
+# make node_modules accessible
+app.use '/lib', express.static(__dirname + '/node_modules/')
+
 app.get '/', (req, res) ->
     return res.render('index')
 
