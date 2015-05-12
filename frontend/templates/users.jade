@@ -1,0 +1,17 @@
+extends layout
+
+block content
+    h1 Manage Users
+
+    ul.admin-list
+        li.admin-list-title.admin-list-item
+            span.quarter name
+            span.half email
+            span.quarter created
+        each user in users
+            li.admin-list-item
+                a(href='/users/1')
+                    span.quarter= user.name
+                    span.half= user.email
+                    span.quarter= moment(user.created).format('d.M.YYYY HH:mm:ss')
+

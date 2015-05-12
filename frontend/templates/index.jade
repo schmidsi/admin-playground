@@ -1,40 +1,14 @@
-doctype html
-html(lang="de")
-        block head
-            head
-                meta(charset='utf-8')
-                title Admin
-                meta(name='description', content='FHNW')
-                meta(name='viewport', content='width=device-width, initial-scale=1.0')
+extends layout
 
-                block css
-                    link(rel='stylesheet', href='css/main.css')
+block content
+    h1 Index
 
-    body
-        .navbar.navbar-inverse.navbar-fixed-top(role='navigation')
-            .container
-                .navbar-header
-                    button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
-                        span.sr-only Toggle navigation
-                        span.icon-bar
-                        span.icon-bar
-                        span.icon-bar
-                    a.navbar-brand(href='#') Project name
-                .collapse.navbar-collapse
-                    ul.nav.navbar-nav
-                        li.active
-                            a(href='#') Home
-                        li
-                            a(href='#about') About
-                        li
-                            a(href='#contact') Contact
-                // /.nav-collapse
-        .container
-            .starter-template
-                h1 Bootstrap starter template
-                p.lead
-                    | Use this document as a way to quickly start any new project.
-                    br
-                    |  All you get is this text and a mostly barebones HTML document.
-
-        script(type='text/javascript', src='js/bundle.js')
+    ul
+        li
+            a(href='/websites') Manage Websites
+        li
+            a(href='/users') Manage Users
+        li Manage Hostnames
+            // a(href='/hostnames') Manage Hostnames
+        li Manage Domains
+            // a(href='/domains') Manage Domains

@@ -1,5 +1,3 @@
-# generated on <%= (new Date).toISOString().split('T')[0] %> using <%= pkg.name %> <%= pkg.version %>
-
 browserSync = require 'browser-sync'
 browserify  = require 'browserify'
 gulp        = require 'gulp'
@@ -94,6 +92,7 @@ gulp.task 'stylus', ->
                 '$fa-font-path': '/lib/font-awesome-stylus/fonts'
             use: [
                 require('bootstrap-styl')()
+                require('autoprefixer-stylus')()
             ]
             import: [
                 require.resolve('font-awesome-stylus')

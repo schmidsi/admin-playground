@@ -1,0 +1,23 @@
+doctype html
+html(lang="de")
+        block head
+            head
+                meta(charset='utf-8')
+                title Optune Admin
+                meta(name='description', content='FHNW')
+                meta(name='viewport', content='width=device-width, initial-scale=1.0')
+
+
+                script(src='//use.typekit.net/ccq5hrt.js')
+                script.
+                    try{Typekit.load();}catch(e){}
+
+                block css
+                    link(rel='stylesheet', href='/css/main.css')
+
+    body
+
+        .container
+            block content
+
+            script(type='text/javascript', src='/js/bundle.js')

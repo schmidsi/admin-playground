@@ -1,1 +1,122 @@
-@import bootstrap
+// @import bootstrap
+
+TEXT_COLOR = white
+BACKGROUND_COLOR = black
+ACCENT_COLOR = #27e200
+ACCENT_COLOR2 = lighten(#1c5bfd, 20)
+
+*, *::before, *::after
+    outline: none
+    box-sizing: border-box
+
+html, body
+    height: 100%
+    width: 100%
+    padding: 0
+    margin: 0
+
+body
+    font-family: brandon-grotesque, sans-serif
+    color: TEXT_COLOR
+    background-image: url(/img/bg.jpg)
+    background-size: cover
+    background-position: center
+
+a
+    color: ACCENT_COLOR2
+    text-decoration: none
+    transition: background-color 0.5s, color 0.3s
+
+    &:hover
+        background-color: ACCENT_COLOR2
+        color: TEXT_COLOR
+
+h1
+    font-weight: 100
+    padding-left: 0.5rem
+
+.container
+    width: 100%
+    margin: 0 auto
+    max-width: 600px
+    padding: 0 0.5rem
+
+.admin-list
+    padding: 0
+
+.admin-list-item
+    list-style-type: none
+    margin-bottom: -1px
+    border-bottom: 1px solid darken(TEXT_COLOR, 50)
+    padding: 0.3rem 0.5rem
+    transition: background-color 0.5s, color 0.3s
+
+    a
+        background-color: transparent
+        color: TEXT_COLOR
+
+    &:hover
+        background-color: white
+        color: ACCENT_COLOR2
+
+        a
+            color: ACCENT_COLOR2
+
+.admin-list-title
+    color: ACCENT_COLOR
+    font-weight: 700
+
+    &:hover
+        background-color: transparent
+
+.admin-props
+    padding: 0.3rem 0.5rem
+
+    dt
+        margin-top: 1rem
+        font-weight: 700
+
+        &:first-of-type
+            margin-top: 0
+
+    dd
+        margin-left: 0
+
+        pre
+            margin: 0
+
+
+.third
+    width: 33.3%
+    display: inline-block
+
+    @media screen and (max-width: 500px)
+        width: 50%
+
+    @media screen and (max-width: 300px)
+        width: 100%
+
+.quarter
+    width: 25%
+    display: inline-block
+
+    @media screen and (max-width: 500px)
+        width: 50%
+
+    @media screen and (max-width: 300px)
+        width: 100%
+
+.half
+    width: 50%
+    display: inline-block
+
+    @media screen and (max-width: 500px)
+        width: 50%
+
+    @media screen and (max-width: 300px)
+        width: 100%
+
+.profile-pic
+    vertical-align: middle
+    height: 2em
+    width: 2em

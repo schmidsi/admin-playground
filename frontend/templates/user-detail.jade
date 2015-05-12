@@ -1,0 +1,31 @@
+extends layout
+
+block content
+    h1= name
+
+    dl.admin-props
+        dt email
+        dd= email
+            a(href='/users/1')= owner
+
+        dt created
+        dd= moment(created).format('d.M.YYYY HH:mm:ss')
+
+        dt updated
+        dd= moment(updated).format('d.M.YYYY HH:mm:ss')
+
+        dt websites
+        each website in websites
+            dd
+                a(href='/websites/1')
+                    span.quarter= website.hostname
+                    span.quarter= website.role
+
+        dt connections
+        each connection in connections
+            dd
+                a(href="http://www.facebook.com/#{ connection.id }" target="_blank")
+                    img.profile-pic(src='http://graph.facebook.com/#{ connection.id }/picture?type=square')
+                    |  http://www.facebook.com/#{ connection.id }
+
+

@@ -1,0 +1,17 @@
+extends layout
+
+block content
+    h1 Manage Websites
+
+    ul.admin-list
+        li.admin-list-title.admin-list-item
+            span.third hostname
+            span.third owner
+            span.third created
+        each website in websites
+            li.admin-list-item
+                a(href='/websites/1')
+                    span.third= website.hostname
+                    span.third= website.owner
+                    span.third= moment(website.created).format('d.M.YYYY HH:mm:ss')
+

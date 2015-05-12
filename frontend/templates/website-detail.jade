@@ -1,0 +1,61 @@
+extends layout
+
+block content
+    h1= hostname
+
+    dl.admin-props
+        dt owner
+        dd
+            a(href='/users/1')= owner
+
+        dt collaborators
+        each collaborator in collaborators
+            dd
+                a(href='/users/1')= collaborator
+
+        dt domain
+        dd= domain
+
+        dt hostnames
+        each hostname in hostnames
+            dd= hostname
+
+        dt created
+        dd= moment(created).format('d.M.YYYY HH:mm:ss')
+
+        dt updated
+        dd= moment(updated).format('d.M.YYYY HH:mm:ss')
+
+        dt data
+        dd
+            pre.
+                "schemaType" : "-",
+                "title" : "",
+                "links" : [
+                    {
+                        "icon" : "soundcloud",
+                        "href" : "asdfasdf",
+                    },
+                    {
+                        "icon" : "twitter",
+                        "href" : "http://www.asdf.ach",
+                    },
+                    {
+                        "icon" : "envelope",
+                        "href" : "simon@optune.me",
+                    }
+                ],
+                "layout" : {
+                    "align" : "center"
+                },
+                "text" : {
+                    "content" : "What a nice website",
+                    "color" : "#FFFFFF"
+                },
+                "logo" : "",
+                "background" : {
+                    "size" : "cover",
+                    "image" : "",
+                    "color" : "#000000"
+                }
+
