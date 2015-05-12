@@ -1883,7 +1883,7 @@ h1 {
     width: 50%;
   }
 }
-@media screen and (max-width: 300px) {
+@media screen and (max-width: 320px) {
   .third {
     width: 100%;
   }
@@ -1897,7 +1897,7 @@ h1 {
     width: 50%;
   }
 }
-@media screen and (max-width: 300px) {
+@media screen and (max-width: 320px) {
   .quarter {
     width: 100%;
   }
@@ -1911,7 +1911,7 @@ h1 {
     width: 50%;
   }
 }
-@media screen and (max-width: 300px) {
+@media screen and (max-width: 320px) {
   .half {
     width: 100%;
   }
