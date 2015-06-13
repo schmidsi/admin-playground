@@ -1,61 +1,30 @@
 extends layout
 
 block content
-    h1= hostname
+    h1= data.hostname.name
 
     dl.admin-props
         dt owner
         dd
-            a(href='/users/1')= owner
+            a(href='/users/1')= data.owner.name
 
         dt collaborators
-        each collaborator in collaborators
+        each collaborator in data.collaborators
             dd
-                a(href='/users/1')= collaborator
+                a(href='/users/1')= collaborator.name
 
         dt domain
-        dd= domain
+        dd= data.domain.name
 
-        dt hostnames
-        each hostname in hostnames
-            dd= hostname
+        dt hostname
+        dd= data.hostname.name
 
         dt created
-        dd= moment(created).format('d.M.YYYY HH:mm:ss')
+        dd= moment(data.createdAt).format('d.M.YYYY HH:mm:ss')
 
         dt updated
-        dd= moment(updated).format('d.M.YYYY HH:mm:ss')
+        dd= moment(data.updatedAt).format('d.M.YYYY HH:mm:ss')
 
         dt data
         dd
-            pre.
-                "schemaType" : "-",
-                "title" : "",
-                "links" : [
-                    {
-                        "icon" : "soundcloud",
-                        "href" : "asdfasdf",
-                    },
-                    {
-                        "icon" : "twitter",
-                        "href" : "http://www.asdf.ach",
-                    },
-                    {
-                        "icon" : "envelope",
-                        "href" : "simon@optune.me",
-                    }
-                ],
-                "layout" : {
-                    "align" : "center"
-                },
-                "text" : {
-                    "content" : "What a nice website",
-                    "color" : "#FFFFFF"
-                },
-                "logo" : "",
-                "background" : {
-                    "size" : "cover",
-                    "image" : "",
-                    "color" : "#000000"
-                }
-
+            pre=JSON.stringify(data.data)

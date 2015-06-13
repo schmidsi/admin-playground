@@ -23,7 +23,6 @@
   },
   "browserify": {
     "transform": [
-      "coffeeify",
       "debowerify"
     ]
   },

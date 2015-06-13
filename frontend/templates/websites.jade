@@ -1,17 +1,14 @@
-extends layout
+h1 Manage Websites
 
-block content
-    h1 Manage Websites
-
-    ul.admin-list
-        li.admin-list-title.admin-list-item
-            span.third hostname
-            span.third owner
-            span.third created
-        each website in websites
-            li.admin-list-item
-                a(href='/websites/1')
-                    span.third= website.hostname
-                    span.third= website.owner
-                    span.third= moment(website.created).format('d.M.YYYY HH:mm:ss')
+ul.admin-list
+    li.admin-list-title.admin-list-item
+        span.third hostname
+        span.third owner
+        span.third created
+    each website in data
+        li.admin-list-item
+            a(href='/websites/#{website.id}')
+                span.third= website.hostname.name
+                span.third= website.owner.name
+                span.third= moment(website.createdAt).format('d.M.YYYY HH:mm:ss')
 

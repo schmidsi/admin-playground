@@ -18,9 +18,9 @@ paths =
     stylus:
         watch:      ['./frontend/styles/**/*.styl']
         compile:    ['./frontend/styles/main.styl']
-    coffee:
-        path:       './frontend/scripts/**/*.coffee'
-        main:       './frontend/scripts/main.coffee'
+    frontend:
+        path:       './frontend/scripts/**/*.js'
+        main:       './frontend/scripts/main.js'
     dist:
         html:       './dist'
         js:         './dist/js/'
@@ -45,10 +45,10 @@ gulp.task 'browser-reload', ['browserify'], ->
 
 gulp.task 'browserify', ->
     return browserify
-            extensions: ['.coffee']
+            extensions: ['.js']
             debug:      true
             fullPaths:  true
-            entries:    paths.coffee.main
+            entries:    paths.frontend.main
         .bundle()
         .on 'error', notify.onError("Browserify error: <%= error.message %>")
         .pipe source('bundle.js')
@@ -65,7 +65,7 @@ gulp.task 'nodemon', (next) ->
             '.git'
             'node_modules/**'
             'node_modules'
-            paths.coffee.path
+            paths.frontend.path
             paths.jade
             'bower_components'
             '.sass-cache'
@@ -113,7 +113,7 @@ gulp.task 'jade', ->
 gulp.task 'default', ['nodemon', 'brower-sync', 'stylus', 'browserify'], ->
     gulp.watch paths.jade, ['browser-reload']
     gulp.watch paths.stylus.watch, ['stylus']
-    gulp.watch paths.coffee.path, ['browserify', 'browser-reload']
+    gulp.watch paths.frontend.path, ['browserify', 'browser-reload']
 
     # type "br <return>"  in the commandline window to reload all browsers manually
     stdin = process.stdin

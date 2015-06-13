@@ -28,6 +28,7 @@ userSchema = new Schema
         sparse: true
     password:
         type: String
+        select: false
         set: (newValue) ->
             return bcrypt.hashSync(newValue, 10)
     verified: Date

@@ -17,7 +17,9 @@ html(lang="de")
 
     body
 
-        .container
+        .container(data-hook='container')
             block content
+                !{content}
 
-            script(type='text/javascript', src='/js/bundle.js')
+
+        script(type='text/javascript', src='/js/bundle.js')
