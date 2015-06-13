@@ -28,7 +28,10 @@ var unbindAsync = function() {
 var asyncHandler = function(event) {
     event.preventDefault();
 
-    var url = this.getAttribute('href');
+    navigate( this.getAttribute('href') );
+}
+
+var navigate = function(url) {
     var xhr = new XMLHttpRequest();
 
     xhr.open('GET', url);
@@ -45,12 +48,17 @@ var asyncHandler = function(event) {
         unbindAsync();
         queryByHook('container')[0].innerHTML = html;
         bindAsync();
+        history.pushState({}, '', url);
     }
     xhr.send()
 }
 
 var init = function init() {
     bindAsync();
+
+    window.onpopstate = function(event) {
+        navigate( document.location.pathname );
+    }
 }
 
 document.addEventListener('DOMContentLoaded', init)
