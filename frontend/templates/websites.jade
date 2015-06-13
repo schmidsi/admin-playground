@@ -9,7 +9,7 @@ ul.admin-list
         span.third created
     each website in data
         li.admin-list-item
-            a(href='/websites/#{website.id}' data-hook='async')
+            a(href='/websites/#{website._id}' data-hook='async')
                 span.third= website.hostname.name
                 span.third= website.owner.name
                 span.third= moment(website.createdAt).format('d.M.YYYY HH:mm:ss')

@@ -1,10 +1,7 @@
-extends layout
+h1 Index
 
-block content
-    h1 Index
-
-    ul
-        li
-            a.button.margin-bottom(href='/websites') Manage Websites
-        li
-            a.button.margin-bottom(href='/users') Manage Users
+ul
+    li
+        a.button.margin-bottom(href='/websites' data-hook='async') Manage Websites
+    li
+        a.button.margin-bottom(href='/users' data-hook='async') Manage Users

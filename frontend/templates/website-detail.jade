@@ -5,12 +5,12 @@ h1.indented= data.hostname.name
 dl.admin-props
     dt owner
     dd
-        a(href='/users/#{ data.owner.id }' data-hook='async')= data.owner.name
+        a(href='/users/#{ data.owner._id }' data-hook='async')= data.owner.name
 
     dt collaborators
     each collaborator in data.collaborators
         dd
-            a(href='/users/#{ collaborator.id }' data-hook='async')= collaborator.name
+            a(href='/users/#{ collaborator._id }' data-hook='async')= collaborator.name
 
     dt domain
     dd= data.domain.name

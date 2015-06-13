@@ -23,9 +23,6 @@ app.use '/img', express.static(__dirname + '/frontend/images')
 # make node_modules accessible
 app.use '/lib', express.static(__dirname + '/node_modules/')
 
-app.get '/', (req, res) ->
-    res.render 'index'
-
 app.use require('./controllers')(app)
 
 if not module.parent

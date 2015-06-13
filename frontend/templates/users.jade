@@ -9,7 +9,7 @@ ul.admin-list
         span.quarter created
     each user in data
         li.admin-list-item
-            a(href='/users/#{user.id}' data-hook='async')
+            a(href='/users/#{user._id}' data-hook='async')
                 span.quarter= user.name
                 span.half= user.email
                 span.quarter= moment(user.createdAt).format('d.M.YYYY HH:mm:ss')

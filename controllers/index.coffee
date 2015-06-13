@@ -12,7 +12,7 @@ module.exports = (app) ->
             if not result
                 return res.status(404).json(error: 'no records found')
             else if req.xhr
-                return res.json(data: result)
+                return res.json(data: result, template: kwargs.template)
             else
                 app.render kwargs.template, data: result, (err, html) ->
                     if err
@@ -24,6 +24,11 @@ module.exports = (app) ->
         .then null, (err) ->
             return res.status(500).json(error: err)
 
+    router.get '/', (req, res) ->
+        if req.xhr then return res.json(template: 'index')
+        else
+            app.render 'index', (err, html) ->
+                return res.render('layout', content: html)
 
     router.get '/websites', (req, res) ->
         return hybridEndpoint req, res,
