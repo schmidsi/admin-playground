@@ -17,6 +17,10 @@
     "validator": "^3.40.1"
   },
   "main": "server.coffee",
+  "scripts": {
+    "start": "coffee server.coffee",
+    "dummydata": "coffee cmds/load_dummy_data.coffee"
+  },
   "browserify": {
     "transform": [
       "coffeeify",

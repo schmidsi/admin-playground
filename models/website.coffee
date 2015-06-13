@@ -11,7 +11,6 @@ Hostname  = require './hostname'
 
 
 websiteSchema = new Schema
-    template: String
     data: Object
     owner:
         type: Schema.Types.ObjectId
@@ -24,7 +23,7 @@ websiteSchema = new Schema
     hostname:
         type: Schema.Types.ObjectId
         ref: 'Hostname'
-    linkedDomain:
+    domain:
         type: Schema.Types.ObjectId
         ref: 'Domain'
 
@@ -58,7 +57,7 @@ websiteSchema.pre 'save', (next) ->
 
             Hostname.update(
                 redirectHostnamesQuery,
-                { website: null, redirectTo: website.hostname.name },
+                { website: null, redirectTo: website.hostname.id },
                 { multi: true } )
             .exec (err, numberAffected) ->
                 next(err)
