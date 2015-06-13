@@ -1,4 +1,5 @@
-_ = require('lodash');
+var _        = require('lodash');
+var Velocity = require('velocity-animate');
 
 // load isomorphic templates
 var templates = {
@@ -46,9 +47,16 @@ var navigate = function(url) {
         html = templates[response.template](locals);
 
         unbindAsync();
-        queryByHook('container')[0].innerHTML = html;
-        bindAsync();
-        history.pushState({}, '', url);
+        container = queryByHook('container')[0];
+
+        Velocity.animate(container, {opacity: 0, translateY: '-200px'})
+        .then( function() {
+            container.innerHTML = html;
+            bindAsync();
+            history.pushState({}, '', url);
+            return Velocity.animate(container, {opacity: 1, translateY: 0})
+        })
+        .catch( function(err) { console.error(err) } );
     }
     xhr.send()
 }
