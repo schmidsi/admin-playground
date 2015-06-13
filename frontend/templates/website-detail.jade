@@ -1,30 +1,29 @@
-extends layout
+a.button.margin-bottom.indented(href='/websites' data-hook='async') < back
 
-block content
-    h1= data.hostname.name
+h1.indented= data.hostname.name
 
-    dl.admin-props
-        dt owner
+dl.admin-props
+    dt owner
+    dd
+        a(href='/users/#{ data.owner.id }' data-hook='async')= data.owner.name
+
+    dt collaborators
+    each collaborator in data.collaborators
         dd
-            a(href='/users/1')= data.owner.name
+            a(href='/users/#{ collaborator.id }' data-hook='async')= collaborator.name
 
-        dt collaborators
-        each collaborator in data.collaborators
-            dd
-                a(href='/users/1')= collaborator.name
+    dt domain
+    dd= data.domain.name
 
-        dt domain
-        dd= data.domain.name
+    dt hostname
+    dd= data.hostname.name
 
-        dt hostname
-        dd= data.hostname.name
+    dt created
+    dd= moment(data.createdAt).format('d.M.YYYY HH:mm:ss')
 
-        dt created
-        dd= moment(data.createdAt).format('d.M.YYYY HH:mm:ss')
+    dt updated
+    dd= moment(data.updatedAt).format('d.M.YYYY HH:mm:ss')
 
-        dt updated
-        dd= moment(data.updatedAt).format('d.M.YYYY HH:mm:ss')
-
-        dt data
-        dd
-            pre=JSON.stringify(data.data)
+    dt data
+    dd
+        pre=JSON.stringify(data.data)

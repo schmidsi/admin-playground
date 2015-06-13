@@ -1,17 +1,16 @@
-extends layout
+a.button.margin-bottom.indented(href='/' data-hook='async') < back
 
-block content
-    h1 Manage Users
+h1.indented Manage Users
 
-    ul.admin-list
-        li.admin-list-title.admin-list-item
-            span.quarter name
-            span.half email
-            span.quarter created
-        each user in users
-            li.admin-list-item
-                a(href='/users/1')
-                    span.quarter= user.name
-                    span.half= user.email
-                    span.quarter= moment(user.created).format('d.M.YYYY HH:mm:ss')
+ul.admin-list
+    li.admin-list-title.admin-list-item
+        span.quarter name
+        span.half email
+        span.quarter created
+    each user in data
+        li.admin-list-item
+            a(href='/users/#{user.id}' data-hook='async')
+                span.quarter= user.name
+                span.half= user.email
+                span.quarter= moment(user.createdAt).format('d.M.YYYY HH:mm:ss')
 

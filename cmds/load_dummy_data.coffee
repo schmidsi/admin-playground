@@ -45,7 +45,7 @@ Q.nbind(mongoose.connect, mongoose)(MONGO_URI)
 .then ->
     User.oAuthQ
         profile:
-            id: 1
+            id: 1049738677
             provider: 'facebook'
             displayName: 'Dragan Strebel'
             emails: [value: 'dragan.strebel@example.com']
@@ -55,8 +55,8 @@ Q.nbind(mongoose.connect, mongoose)(MONGO_URI)
 
     User.oAuthQ
         profile:
-            id: 2
-            provider: 'google'
+            id: 4
+            provider: 'facebook'
             displayName: 'Monika Laugenstein'
             emails: [value: 'monika.laugenstein@example.com']
 
