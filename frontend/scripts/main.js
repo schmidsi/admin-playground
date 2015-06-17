@@ -74,6 +74,10 @@ var async = function(url, formdata, method) {
     xhr.onload = function (e) {
         response = JSON.parse(this.responseText);
 
+        if (this.status == '500') {
+            return alert( response.error.message )
+        }
+
         if (response.redirect) {
             return async(response.redirect)
         }
