@@ -23,6 +23,12 @@ app.use '/img', express.static(__dirname + '/frontend/images')
 # make node_modules accessible
 app.use '/lib', express.static(__dirname + '/node_modules/')
 
+app.use require('body-parser').urlencoded(extended: true)
+app.use require('multer')(dest: './uploads/')
+app.use require('cookie-parser')()
+app.use require('cookie-session')(secret: process.env.SECRET || 'INSECURE!!!')
+app.use require('flash')()
+
 app.use require('./controllers')(app)
 
 if not module.parent

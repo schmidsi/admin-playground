@@ -4,6 +4,7 @@ TEXT_COLOR = white
 BACKGROUND_COLOR = black
 ACCENT_COLOR = #27e200
 ACCENT_COLOR2 = lighten(#1c5bfd, 20)
+ERROR_COLOR = #d9421b
 
 *, *::before, *::after
     outline: none
@@ -35,6 +36,21 @@ h1
     margin-top: 0
     font-weight: 100
 
+input
+    font-size: inherit
+    border: none
+    border-bottom: 1px solid rgba(255,255,255,0.6)
+    background-color: transparent
+    color: white
+
+.validation
+    font-size: 1rem
+    display: block
+
+.error
+    color: ERROR_COLOR
+    border-color: ERROR_COLOR
+
 .indented
     margin-left: 0.5rem
 
@@ -44,6 +60,8 @@ h1
     background-color: transparent
     padding: 0.3rem 0.5rem
     color: ACCENT_COLOR
+    text-align: center
+    cursor: pointer
 
     transition: background-color 0.5s, color 0.3s
 

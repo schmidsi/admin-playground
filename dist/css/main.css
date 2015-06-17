@@ -1823,6 +1823,21 @@ h1 {
   margin-top: 0;
   font-weight: 100;
 }
+input {
+  font-size: inherit;
+  border: none;
+  border-bottom: 1px solid rgba(255,255,255,0.6);
+  background-color: transparent;
+  color: #fff;
+}
+.validation {
+  font-size: 1rem;
+  display: block;
+}
+.error {
+  color: #d9421b;
+  border-color: #d9421b;
+}
 .indented {
   margin-left: 0.5rem;
 }
@@ -1832,6 +1847,8 @@ h1 {
   background-color: transparent;
   padding: 0.3rem 0.5rem;
   color: #27e200;
+  text-align: center;
+  cursor: pointer;
   -webkit-transition: background-color 0.5s, color 0.3s;
           transition: background-color 0.5s, color 0.3s;
 }

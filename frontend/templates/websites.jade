@@ -1,4 +1,4 @@
-a.button.margin-bottom.indented(href='/' data-hook='async') < back
+a.button.margin-bottom.indented(href='/' data-hook='async-link') < back
 
 h1.indented Manage Websites
 
@@ -9,8 +9,7 @@ ul.admin-list
         span.third created
     each website in data
         li.admin-list-item
-            a(href='/websites/#{website._id}' data-hook='async')
+            a(href='/websites/#{website._id}' data-hook='async-link')
                 span.third= website.hostname.name
                 span.third= website.owner.name
-                span.third= moment(website.createdAt).format('d.M.YYYY HH:mm:ss')
-
+                span.third= moment(website.createdAt).format('D.M.YYYY HH:mm:ss')

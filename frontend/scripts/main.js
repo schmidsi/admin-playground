@@ -1,5 +1,6 @@
-var _        = require('lodash');
-var Velocity = require('velocity-animate');
+var _         = require('lodash');
+//var serialize = require('form-serialize');
+var Velocity  = require('velocity-animate');
 
 // load isomorphic templates
 var templates = {
@@ -15,33 +16,71 @@ var queryByHook = function(hook) {
 }
 
 var bindAsync = function() {
-    _( queryByHook('async') ).each(function(el, i) {
-        el.addEventListener('click', asyncHandler)
+    _( queryByHook('async-link') ).each(function(el, i) {
+        el.addEventListener('click', asyncLinkHandler)
+    });
+
+    _( queryByHook('async-form') ).each(function(el, i) {
+        el.addEventListener('submit', asyncFormHandler)
+    });
+
+    _( queryByHook('async-delete') ).each(function(el, i) {
+        el.addEventListener('click', asyncDeleteHandler)
     });
 }
 
 var unbindAsync = function() {
-    _( queryByHook('async') ).each(function(el, i) {
-        el.removeEventListener('click', asyncHandler)
+    _( queryByHook('async-link') ).each(function(el, i) {
+        el.removeEventListener('click', asyncLinkHandler)
+    });
+
+    _( queryByHook('async-form') ).each(function(el, i) {
+        el.removeEventListener('submit', asyncFormHandler)
+    });
+
+    _( queryByHook('async-delete') ).each(function(el, i) {
+        el.removeEventListener('click', asyncDeleteHandler)
     });
 }
 
-var asyncHandler = function(event) {
+var asyncLinkHandler = function(event) {
     event.preventDefault();
 
-    navigate( this.getAttribute('href') );
+    async( this.getAttribute('href') );
 }
 
-var navigate = function(url) {
+var asyncFormHandler = function(event) {
+    event.preventDefault();
+
+    async( this.action, new FormData(this) )
+}
+
+var asyncDeleteHandler = function(event) {
+    event.preventDefault();
+
+    async( document.location.pathname, undefined, 'DELETE')
+}
+
+var async = function(url, formdata, method) {
     var xhr = new XMLHttpRequest();
 
-    xhr.open('GET', url);
+    if (!method) {
+        method = formdata ? 'POST' : 'GET'
+    }
+
+    xhr.open(method, url);
     xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest')
     xhr.setRequestHeader('Accept', 'application/json')
     xhr.onload = function (e) {
         response = JSON.parse(this.responseText);
+
+        if (response.redirect) {
+            return async(response.redirect)
+        }
+
         locals = {
             data: response.data,
+            validation: response.validation,
             moment: require('moment')
         }
         html = templates[response.template](locals);
@@ -58,14 +97,15 @@ var navigate = function(url) {
         })
         .catch( function(err) { console.error(err) } );
     }
-    xhr.send()
+    xhr.send( formdata )
 }
+
 
 var init = function init() {
     bindAsync();
 
     window.onpopstate = function(event) {
-        navigate( document.location.pathname );
+        async( document.location.pathname );
     }
 }
 

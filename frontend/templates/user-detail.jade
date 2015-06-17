@@ -1,23 +1,51 @@
-a.button.margin-bottom.indented(href='/users' data-hook='async') < back
+a.button.margin-bottom.indented(href='/users' data-hook='async-link') < back
 
-h1.indented= data.name
+form(method='POST' data-hook='async-form')
+    h1.indented
+        if validation && validation.errors.name
+            label.error.validation(for='input-name')= validation.errors.name.message
+        input#input-name.half(
+            type='text'
+            value=data.name
+            data-hook='input'
+            name='name'
+            placeholder='Name'
+            class=(validation && validation.errors.name) ? "error" : ''
+            )
 
-dl.admin-props
-    dt email
-    dd= data.email
+    dl.admin-props
+        dt email
+        dd
+            if validation && validation.errors.email
+                label.error.validation(for='input-email')= validation.errors.email.message
+            input#input-email.half(
+                type='email'
+                value=data.email
+                data-hook='input'
+                name='email'
+                placeholder='name@example.com'
+                class=(validation && validation.errors.email) ? "error" : ''
+                )
 
-    dt created
-    dd= moment(data.createdAz).format('d.M.YYYY HH:mm:ss')
 
-    dt updated
-    dd= moment(data.updatedAt).format('d.M.YYYY HH:mm:ss')
+        dt created
+        dd= moment(data.createdAt).format('D.M.YYYY HH:mm:ss')
 
-    if data.connections
-        dt connections
-        each connection in data.connections
-            dd
-                a(href="http://www.facebook.com/#{ connection.profile.id }" target="_blank")
-                    img.profile-pic(src='http://graph.facebook.com/#{ connection.profile.id }/picture?type=square')
-                    |  http://www.facebook.com/#{ connection.profile.id }
+        dt updated
+        dd= moment(data.updatedAt).format('D.M.YYYY HH:mm:ss')
 
+        if data.connections.length
+            dt connections
+            each connection in data.connections
+                dd
+                    a(href="http://www.facebook.com/#{ connection.profile.id }" target="_blank")
+                        img.profile-pic(src='http://graph.facebook.com/#{ connection.profile.id }/picture?type=square')
+                        |  http://www.facebook.com/#{ connection.profile.id }
+
+    input.button.indented(type='submit')
+
+    if data.name
+        a.button.indented(href="/users/#{ data._id }/delete" data-hook='async-delete') Delete
+
+    // pre=JSON.stringify(validation, null, 4)
 

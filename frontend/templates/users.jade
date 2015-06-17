@@ -1,4 +1,4 @@
-a.button.margin-bottom.indented(href='/' data-hook='async') < back
+a.button.margin-bottom.indented(href='/' data-hook='async-link') &lt; back
 
 h1.indented Manage Users
 
@@ -9,8 +9,9 @@ ul.admin-list
         span.quarter created
     each user in data
         li.admin-list-item
-            a(href='/users/#{user._id}' data-hook='async')
+            a(href='/users/#{user._id}' data-hook='async-link')
                 span.quarter= user.name
                 span.half= user.email
-                span.quarter= moment(user.createdAt).format('d.M.YYYY HH:mm:ss')
+                span.quarter= moment(user.createdAt).format('D.M.YYYY HH:mm:ss')
 
+a.indented.button(href='/users/add' data-hook='async-link') Create new user

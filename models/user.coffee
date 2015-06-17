@@ -20,12 +20,15 @@ OAUTH_FUNCTIONS_DEFAULT_ARGS =
 
 
 userSchema = new Schema
-    name: String
+    name:
+        type: String
+        required: true
     email:
         type: String
         index: true
         unique: true
         sparse: true
+        required: true
     password:
         type: String
         select: false
